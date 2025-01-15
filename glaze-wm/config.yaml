@@ -110,8 +110,8 @@ bar:
     - type: text
       text: " "
     - type: "weather"
-      latitude: 42.2808
-      longitude: -83.7430
+      latitude: 
+      longitude: 
       label: "<attr fs='20' fg='#a37c89'> </attr>{temperature_fahrenheit}°"
       label_sun: "<attr fs='20' fg='#a37c89'>󰖙 </attr>{temperature_fahrenheit}°"
       label_moon: "<attr fs='20' fg='#a37c89'>󰖔 </attr>{temperature_fahrenheit}°"
