@@ -260,11 +260,11 @@ keybindings:
   - command: "exec wezterm-gui"
     bindings: ["Alt+Enter", "Ctrl+Alt+T"]
 
-  # launch wsl
-  - command: "exec debian"
+  # launch wsl (has to be wezterm-gui or else extra window)
+  - command: "exec wezterm-gui start debian"
     binding: "Ctrl+Alt+D"
   
-  - command: "exec kali"
+  - command: "exec wezterm-gui start kali"
     binding: "Ctrl+Alt+K"
 
   # Focus the workspace that last had focus.
