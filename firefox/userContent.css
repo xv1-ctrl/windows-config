@@ -1,0 +1,23 @@
+/* changing privatebrowsing defaults cuz the purple had to go */
+@-moz-document url(about:privatebrowsing) {
+    html, body { 
+        background: #33292d; 
+    }
+
+    /* hide info text */
+    .promo, .info {
+        display: none !important;
+    }
+
+    /* new home screen color */
+    html.private {
+        --in-content-page-background: #000000 !important;
+    }
+
+    /* classes for wordmark and logo are html.private .name respectively if u want to hide them */
+
+    /* no mid page search bar */
+    #search-handoff-button {
+        display: none !important; 
+    }
+}
