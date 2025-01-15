@@ -1,0 +1,61 @@
+/* main config for tab center reborn */
+/* hide native upper tabs */
+#TabsToolbar {
+    visibility: collapse !important;
+}
+
+/* move min max and close buttons */
+.titlebar-buttonbox-container {
+    display: flex !important;
+}
+
+/* hide tab center reborn header */
+#sidebar-box[sidebarcommand*="tabcenter"] #sidebar-header {
+    visibility: collapse;
+    display: none;
+}
+
+/* collapse sidebar on fullscreen */
+#main-window[inFullscreen]:not([chromehidden~="toolbar"]) #sidebar-box[sidebarcommand*="tabcenter"]:not([hidden]):not(:hover) {
+    min-width: 1px !important;
+    max-width: 1px !important;
+}
+
+/* tab movement */
+#main-window:not([chromehidden~="toolbar"]) #sidebar-box[sidebarcommand*="tabcenter"]:hover {
+    min-width: 200px !important;
+}
+
+/* height and top changes to ensure there are no tabs under the url bar */
+#sidebar-box[sidebarcommand="tabcenter-reborn_ariasuni-sidebar-action"] {
+    top: 40px;
+    bottom: 0;
+    left: 0;
+    height: calc(100% - 40px);
+    overflow: hidden !important;
+    position: absolute;
+    transition: all 200ms !important;
+    min-width: 48px !important;
+    max-width: 48px !important;
+    width: 48px !important;
+    z-index: 100;
+}
+
+/* hide dividing border */
+[sidebarcommand*="tabcenter"] ~ #sidebar-splitter {
+    display: none;
+}
+
+/* reload etc above sidebar */
+#navigator-toolbox {
+    z-index: 1000 !important;
+}
+
+/* set browser padding not including sidebar and not in fullscreen */
+#main-window[inFullscreen]:not([chromehidden~="toolbar"]) #browser:not([sidebarcommand]) { 
+    margin-left: 0px !important; 
+}
+
+#browser:not([sidebarcommand]) {
+    margin-left: 48px !important;
+}
