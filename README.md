@@ -1,5 +1,5 @@
-![win](https://github.com/user-attachments/assets/513dc72d-ae5b-4132-a81b-49e272aef815)
-
+Windows Config
+--------------
 Visual
 - Glaze-wm
 - Zebar
