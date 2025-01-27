@@ -13,7 +13,7 @@ config.default_cursor_style = "SteadyUnderline"
 -- config.cursor_blink_ease_out = 'Constant'
 config.color_scheme = "Zenburn"
 config.font = wezterm.font "0xProto Nerd Font Mono"
-config.window_background_opacity = 0.1
+config.window_background_opacity = 0.4
 
 config.window_padding = {
 	left = 14,
