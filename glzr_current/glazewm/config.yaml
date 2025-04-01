@@ -1,0 +1,341 @@
+general:
+  startup_commands: ['shell-exec zebar']
+  focus_follows_cursor: false
+  cursor_follows_focus: false
+
+  # Whether to switch back and forth between the previously focused workspace
+  # when focusing the current workspace.
+  toggle_workspace_on_refocus: true
+
+  # Whether to show floating windows as always on top.
+  show_floating_on_top: false
+
+  # Amount to move floating windows by (eg. when using `alt+<hjkl>` on a floating window)
+  floating_window_move_amount: "5%"
+
+  # Whether to center new floating windows.
+  center_new_floating_windows: true
+
+  # *Strongly* recommended to set to 'false'. Whether to globally enable/disable
+  # window transition animations (on minimize, close, etc). Set to 'unchanged'
+  # to make no setting changes.
+  window_animations: "unchanged"
+
+gaps:
+  inner_gap: "6px"
+  outer_gap: 
+    top: "28px"
+    right: "8px"
+    bottom: "12px"
+    left: "8px"
+
+window_effects:
+  focused_window:
+    border: 
+      enabled: true
+      color: "#a37c89"
+
+  other_windows:
+    border:
+      enabled: true
+      color: "#b3b5b3"    
+
+bar:
+  height: 24
+  position: "top"
+  opacity: 1.0
+  background: "#5e564b20"
+  foreground: "#ffffff"
+  font_family: "0xProto Nerd Font Mono"
+  font_size: "12px"
+  # padding: "4px 6px"
+  offset_x: 18
+  offset_y: 4
+  border_radius: 6
+  border_color: "#a37c89"
+  border_width: 0
+  component_separator:
+    label: " "
+  components_left:
+    - type: "text"
+      text: " "
+      font_size: "18px"
+    - type: "workspaces" 
+      focused_workspace_background: "#ffffff33"
+      displayed_workspace_background: "#00000033"
+      default_workspace_background: "transparent"
+      default_workspace_foreground: "#a37c89"
+    - type: text
+      text: " "
+#    - type: "window title"
+    - type: "music" 
+      label_not_playing: ""
+      label_paused: "♫ {song_title} - {artist_name}"
+      label_playing: "♫ {song_title} - {artist_name}  ▶"
+      max_title_length: 10
+    - type: text
+      text: " "
+  components_center:
+    - type: "clock"
+      time_formatting: "hh:mm tt  ddd MMM d"
+  components_right:
+    - type: "network"
+      foreground: "#a37c89"
+      label_no_internet: ""
+      label_ethernet: "󰈁"
+      label_wifi_strength_0: "󰤯"
+      label_wifi_strength_25: "󰤟"
+      label_wifi_strength_50: "󰤢"
+      label_wifi_strength_75: "󰤥"
+      label_wifi_strength_100: "󰤨"
+    - type: text
+      text: " MWireless  "
+    - type: text
+      foreground: "#a37c89"
+      font_size: "20px"
+      text: ""
+    - type: "battery"
+      label_draining: "{battery_level}%"
+      label_power_saver: "{battery_level}%"
+      label_charging: "{battery_level}%"
+      refresh_interval: 4500
+    - type: text
+      text: " "
+    - type: "cpu"
+      label: "<attr fs='20' fg='#a37c89'> </attr>{percent_usage}%"
+      refresh_interval_ms: 1000
+    - type: text
+      text: " "
+    - type: "gpu"
+      label: "<attr fs='20' fg='#a37c89'>󱝊 </attr>{percent_usage}%"
+      refresh_intercal_ms: 1000
+    - type: text
+      text: " "
+    - type: "memory"
+      label: "<attr fs='20' fg='#a37c89'> </attr>{percent_usage}%"
+      refresh_interval_ms: 1000
+    - type: text
+      text: " "
+    - type: "weather"
+      latitude: 42.2808
+      longitude: -83.7430
+      label: "<attr fs='20' fg='#a37c89'> </attr>{temperature_fahrenheit}°"
+      label_sun: "<attr fs='20' fg='#a37c89'>󰖙 </attr>{temperature_fahrenheit}°"
+      label_moon: "<attr fs='20' fg='#a37c89'>󰖔 </attr>{temperature_fahrenheit}°"
+      label_cloud_moon: "<attr fs='20' fg='#a37c89'>󰼱 </attr>{temperature_fahrenheit}°"
+      label_cloud_sun: "<attr fs='20' fg='#a37c89'>󰖕 </attr>{temperature_fahrenheit}°"
+      label_cloud_moon_rain: "<attr fs='20' fg='#a37c89'>󰖖 </attr>{temperature_fahrenheit}°"
+      label_cloud_sun_rain: "<attr fs='20' fg='#a37c89'>󰼳 </attr>{temperature_fahrenheit}°"
+      label_cloud_rain: "<attr fs='20' fg='#a37c89'>󰖖 </attr>{temperature_fahrenheit}°"
+      label_snow_flake: "<attr fs='20' fg='#a37c89'>󰖘 </attr>{temperature_fahrenheit}°"
+      label_thunderstorm: "<attr fs='20' fg='#a37c89'>󰖓 </attr>{temperature_fahrenheit}°"
+      label_cloud: "<attr fs='20' fg='#a37c89'> </attr>{temperature_fahrenheit}°"
+    - type: text
+      text: " "
+    - type: "tiling direction"
+      label_horizontal: "⮂ "
+      label_vertical: "⮁ "
+
+
+workspaces:
+  - name: "1"
+  - name: "2"
+  - name: "3"
+  - name: "4"
+  - name: "5"
+  - name: "6"
+  - name: "7"
+  - name: "8"
+  - name: "9"
+
+window_rules:
+    - commands: ['ignore']
+      match:
+        # Ignores any Zebar windows.
+        - window_process: { equals: 'zebar' }
+
+        # Ignores picture-in-picture windows for browsers.
+        - window_title: { regex: '[Pp]icture.in.[Pp]icture' }
+          window_class: { regex: 'Chrome_WidgetWin_1|MozillaDialogClass' }
+
+        # Ignore rules for various 3rd-party apps.
+        - window_process: { equals: 'PowerToys' }
+          window_class: { regex: 'HwndWrapper\[PowerToys\.PowerAccent.*?\]' }
+        - window_process: { equals: 'PowerToys' }
+          window_title: { regex: '.*? - Peek' }
+        - window_process: { equals: 'Lively' }
+          window_class: { regex: 'HwndWrapper' }
+        - window_process: { equals: 'Tor Browser' }   
+        - window_process: { equals: 'Task Manager' }  
+
+binding_modes:
+  # When enabled, the focused window can be resized via arrow keys or HJKL.
+  - name: 'resize'
+    keybindings:
+      - commands: ['resize --width -2%']
+        bindings: ['h', 'left']
+      - commands: ['resize --width +2%']
+        bindings: ['l', 'right']
+      - commands: ['resize --height +2%']
+        bindings: ['k', 'up']
+      - commands: ['resize --height -2%']
+        bindings: ['j', 'down']
+      # Press enter/escape to return to default keybindings.
+      - commands: ['wm-disable-binding-mode --name resize']
+        bindings: ['escape', 'enter']
+
+
+keybindings:
+  # Shift focus in a given direction.
+  - commands: ['focus --direction left']
+    bindings: ['alt+h', 'alt+left']
+  - commands: ['focus --direction right']
+    bindings: ['alt+l', 'alt+right']
+  - commands: ['focus --direction up']
+    bindings: ['alt+k', 'alt+up']
+  - commands: ['focus --direction down']
+    bindings: ['alt+j', 'alt+down']
+
+  # Move focused window in a given direction.
+  - commands: ['move --direction left']
+    bindings: ['alt+shift+h', 'alt+shift+left']
+  - commands: ['move --direction right']
+    bindings: ['alt+shift+l', 'alt+shift+right']
+  - commands: ['move --direction up']
+    bindings: ['alt+shift+k', 'alt+shift+up']
+  - commands: ['move --direction down']
+    bindings: ['alt+shift+j', 'alt+shift+down']
+
+  # Resize focused window by a percentage or pixel amount.
+  - commands: ['resize --width -2%']
+    bindings: ['alt+u']
+  - commands: ['resize --width +2%']
+    bindings: ['alt+p']
+  - commands: ['resize --height +2%']
+    bindings: ['alt+o']
+  - commands: ['resize --height -2%']
+    bindings: ['alt+i']
+
+  # As an alternative to the resize keybindings above, resize mode enables
+  # resizing via arrow keys or HJKL. The binding mode is defined above with
+  # the name 'resize'.
+  - commands: ['wm-enable-binding-mode --name resize']
+    bindings: ['alt+r']
+
+  # Disables window management and all other keybindings until alt+shift+p
+  # is pressed again.
+  - commands: ['wm-toggle-pause']
+    bindings: ['alt+shift+p']
+
+  # Change tiling direction. This determines where new tiling windows will
+  # be inserted.
+  - commands: ['toggle-tiling-direction']
+    bindings: ['alt+v']
+
+  # Change focus from tiling windows -> floating -> fullscreen.
+  - commands: ['wm-cycle-focus']
+    bindings: ['alt+space']
+
+  # Change the focused window to be floating / tiling.
+  - commands: ['toggle-floating --centered']
+    bindings: ['alt+shift+space']
+
+  # Change the focused window to be tiling.
+  - commands: ['toggle-tiling']
+    bindings: ['alt+t']
+
+  # Change the focused window to be fullscreen.
+  - commands: ['toggle-fullscreen']
+    bindings: ['alt+m']
+
+  # Minimize focused window.
+  - commands: ['toggle-minimized']
+    bindings: ['alt+x']
+
+  # Close focused window.
+  - commands: ['close']
+    bindings: ['alt+shift+x']
+
+  # Kill GlazeWM process safely.
+  - commands: ['wm-exit']
+    bindings: ['alt+shift+e']
+
+   # Re-evaluate configuration file.
+  - commands: ['wm-reload-config']
+    bindings: ['alt+shift+r']
+
+  # Redraw all windows.
+  - commands: ['wm-redraw']
+    bindings: ['alt+shift+w']
+
+  # Launch CMD terminal
+  - commands: ['shell-exec wezterm-gui']
+    bindings: ["alt+enter", "ctrl+alt+t"]
+
+  # launch wsl (has to be wezterm-gui or else extra window)
+  - commands: ['shell-exec wezterm-gui start debian']
+    bindings: ['ctrl+alt+d']
+  
+  - commands: ['shell-exec wezterm-gui start kali']
+    bindings: ['ctrl+alt+k']
+
+   # Focus the next/previous active workspace defined in `workspaces` config.
+  - commands: ['focus --next-active-workspace']
+    bindings: ['alt+s']
+  - commands: ['focus --prev-active-workspace']
+    bindings: ['alt+a']
+
+  # Focus the workspace that last had focus.
+  - commands: ['focus --recent-workspace']
+    bindings: ['alt+d']
+
+  # Change focus to a workspace defined in `workspaces` config.
+  - commands: ['focus --workspace 1']
+    bindings: ['alt+1']
+  - commands: ['focus --workspace 2']
+    bindings: ['alt+2']
+  - commands: ['focus --workspace 3']
+    bindings: ['alt+3']
+  - commands: ['focus --workspace 4']
+    bindings: ['alt+4']
+  - commands: ['focus --workspace 5']
+    bindings: ['alt+5']
+  - commands: ['focus --workspace 6']
+    bindings: ['alt+6']
+  - commands: ['focus --workspace 7']
+    bindings: ['alt+7']
+  - commands: ['focus --workspace 8']
+    bindings: ['alt+8']
+  - commands: ['focus --workspace 9']
+    bindings: ['alt+9']
+
+  # Move the focused window's parent workspace to a monitor in a given
+  # direction.
+  - commands: ['move-workspace --direction left']
+    bindings: ['alt+shift+a']
+  - commands: ['move-workspace --direction right']
+    bindings: ['alt+shift+f']
+  - commands: ['move-workspace --direction up']
+    bindings: ['alt+shift+d']
+  - commands: ['move-workspace --direction down']
+    bindings: ['alt+shift+s']
+
+  # Move focused window to a workspace defined in `workspaces` config.
+  - commands: ['move --workspace 1', 'focus --workspace 1']
+    bindings: ['alt+shift+1']
+  - commands: ['move --workspace 2', 'focus --workspace 2']
+    bindings: ['alt+shift+2']
+  - commands: ['move --workspace 3', 'focus --workspace 3']
+    bindings: ['alt+shift+3']
+  - commands: ['move --workspace 4', 'focus --workspace 4']
+    bindings: ['alt+shift+4']
+  - commands: ['move --workspace 5', 'focus --workspace 5']
+    bindings: ['alt+shift+5']
+  - commands: ['move --workspace 6', 'focus --workspace 6']
+    bindings: ['alt+shift+6']
+  - commands: ['move --workspace 7', 'focus --workspace 7']
+    bindings: ['alt+shift+7']
+  - commands: ['move --workspace 8', 'focus --workspace 8']
+    bindings: ['alt+shift+8']
+  - commands: ['move --workspace 9', 'focus --workspace 9']
+    bindings: ['alt+shift+9']
