@@ -8,6 +8,13 @@
    color: #a37c89;
    margin-right: 7px;
  }
+
+ #window {
+    font-size: 10px;
+    color: rgb(255 255 255 / 80%);
+    margin-right: 8px;
+    margin-left: 2px;
+ }
  
  body {
    font-family: "0xProto Nerd Font Mono", ui-monospace, monospace;
